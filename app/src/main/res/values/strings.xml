@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">GithubRepos</string>
+    <string name="app_name">TrendHub</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="content_description_avatar_imgview">Avatar of repository owner</string>
 </resources>
