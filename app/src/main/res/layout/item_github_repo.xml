@@ -6,7 +6,7 @@
 
         <variable
             name="githubrepo"
-            type="com.adeel.githubrepos.model.GithubRepo.Item" />
+            type="com.adeel.githubrepos.model.TrendingGithubRepository" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -25,10 +25,11 @@
                 android:id="@+id/imageView"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:avatarUrl="@{githubrepo.owner.avatarUrl}"
+                android:avatarUrl="@{githubrepo.avatar}"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@tools:sample/avatars"
+                android:contentDescription="@string/content_description_avatar_imgview" />
 
             <TextView
                 android:id="@+id/tvRepoName"
@@ -36,8 +37,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:ellipsize="end"
+                android:setOwnerName="@{githubrepo.author}"
+                android:setRepoName="@{githubrepo.name}"
                 android:singleLine="true"
-                android:text="@{githubrepo.name}"
+                android:textColor="@android:color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toTopOf="parent"
@@ -50,7 +53,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
                 android:ellipsize="end"
-                android:minLines="2"
+                android:maxLines="3"
                 android:text="@{githubrepo.description}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
@@ -63,7 +66,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
-                android:text="@{githubrepo.language}"
+                android:drawableStart="@drawable/drawable_language"
+                android:drawablePadding="4dp"
+                android:setLanguageColor="@{githubrepo.languageColor}"
+                android:setRepoLanguage="@{githubrepo.language}"
                 app:layout_constraintStart_toEndOf="@+id/imageView"
                 app:layout_constraintTop_toBottomOf="@+id/tvRepoDescription"
                 tools:text="Repo Language" />
@@ -72,13 +78,27 @@
                 android:id="@+id/tvRepoStars"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="4dp"
                 android:drawableStart="@drawable/ic_star"
-                android:text="@{String.valueOf(githubrepo.stargazersCount)}"
+                android:drawablePadding="4dp"
+                android:text="@{String.valueOf(githubrepo.stars)}"
                 app:layout_constraintStart_toEndOf="@+id/tvRepoLanguage"
                 app:layout_constraintTop_toBottomOf="@+id/tvRepoDescription"
                 tools:text="111" />
+
+            <TextView
+                android:id="@+id/tvTrendingScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:drawableStart="@drawable/ic_trending_score"
+                android:drawablePadding="4dp"
+                android:text="@{String.valueOf(githubrepo.currentPeriodStars)}"
+                app:layout_constraintStart_toEndOf="@+id/tvRepoStars"
+                app:layout_constraintTop_toBottomOf="@+id/tvRepoDescription"
+                tools:text="123" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
