@@ -6,9 +6,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.adeel.githubrepos.R
 import com.adeel.githubrepos.databinding.ItemGithubRepoBinding
-import com.adeel.githubrepos.model.GithubRepo
+import com.adeel.githubrepos.model.TrendingGithubRepository
 
-class GithubRepoAdapter(val githubRepoList: ArrayList<GithubRepo.Item>) :
+class TrendingGithubRepositoryAdapter(private val githubRepoList: ArrayList<TrendingGithubRepository>) :
     RecyclerView.Adapter<GithubRepoViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GithubRepoViewHolder {
         val contentView = DataBindingUtil.inflate<ItemGithubRepoBinding>(
@@ -26,7 +26,7 @@ class GithubRepoAdapter(val githubRepoList: ArrayList<GithubRepo.Item>) :
         holder.view.githubrepo = githubRepoList[holder.adapterPosition]
     }
 
-    fun updateRepo(updatedList: List<GithubRepo.Item>) {
+    fun updateRepo(updatedList: List<TrendingGithubRepository>) {
         githubRepoList.clear()
         githubRepoList.addAll(updatedList)
         notifyDataSetChanged()
