@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_navigation"
+    app:startDestination="@id/githubReposFragment">
+
+    <fragment
+        android:id="@+id/githubReposFragment"
+        android:name="com.adeel.githubrepos.view.fragment.TrendingGithubRepositoryFragment"
+        android:label="GithubReposFragment">
+        <action
+            android:id="@+id/actionOpenFilterFragment"
+            app:destination="@id/filterFragment" >
+            <argument android:defaultValue="false"
+                android:name="isLanguageFilter" />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/filterFragment"
+        android:name="com.adeel.githubrepos.view.fragment.FilterFragment"
+        android:label="fragment_filter"
+        tools:layout="@layout/fragment_filter">
+        <argument
+            android:name="isLanguageFilter"
+            android:defaultValue="false"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/actionOpenGithubRepoFragment"
+            app:destination="@id/githubReposFragment" />
+    </fragment>
+</navigation>
